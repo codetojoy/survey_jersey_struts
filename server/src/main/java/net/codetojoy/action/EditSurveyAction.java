@@ -7,14 +7,19 @@ import net.codetojoy.service.*;
 
 import org.apache.log4j.Logger;
 
+// legacy
 public class EditSurveyAction extends ActionSupport {
 
+    // ------- logger
     private static final Logger logger = Logger.getLogger(EditSurveyAction.class);
-    private static final String LOG_PREFIX = "TRACER EditSurveyAction  ";
+    private static final String VERSION = "v1";
+    private static int instanceCount = 0;
 
     private void logIt(String msg) {
-        logger.error(LOG_PREFIX + " " + msg);
-    }
+        String prefix = "TRACER [EditSurveyAction " + VERSION + "(" + instanceCount + ")" + "] ";
+        logger.info(prefix + " " + msg);
+     }
+    //
 
 	private static final long serialVersionUID = 1L;
 
@@ -22,6 +27,12 @@ public class EditSurveyAction extends ActionSupport {
     private Integer age;
     private Boolean fieldP;
     private Boolean fieldT;
+
+    public EditSurveyAction() {
+        super();
+        logIt("contructor");
+        instanceCount++;
+    }
 
 	public String execute() throws Exception {
         logIt("execute begin");

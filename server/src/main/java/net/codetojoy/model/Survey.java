@@ -1,5 +1,6 @@
 package net.codetojoy.model;
 
+// legacy
 public class Survey extends Scenario {
     private String answerA;
     private String answerB;

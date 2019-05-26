@@ -1,5 +1,6 @@
 package net.codetojoy.model;
 
+// legacy
 public class Scenario {
     private Integer age;
     private Boolean fieldP;
