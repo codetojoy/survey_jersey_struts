@@ -7,6 +7,8 @@
 <h3>Welcome</h3>
 
 <p><a href='<s:url action="editScenario" />' >Edit Scenario</a></p>
+<p><a href='<s:url action="viewSurveys" />' >View all Surveys</a></p>
+<p><a href='<s:url action="viewSurvey" />' >View Survey 302</a></p>
 
 </body>
 </html>

@@ -13,6 +13,14 @@
 			<result>/index.jsp</result>
 		</action>
 
+	    <action name="viewSurveys" class="net.codetojoy.action.SurveysAction" method="viewAll">
+	    	<result name="success">/viewSurveys.jsp</result>
+	    </action>
+
+	    <action name="viewSurvey" class="net.codetojoy.action.SurveysAction" method="viewOne">
+	    	<result name="success">/viewSurveys.jsp</result>
+	    </action>
+
 	    <action name="editScenario" class="net.codetojoy.action.EditScenarioAction" method="input">
 	    	<result name="input">/editScenario.jsp</result>
 	    </action>

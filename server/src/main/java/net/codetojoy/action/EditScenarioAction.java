@@ -7,29 +7,25 @@ import net.codetojoy.service.*;
 
 import org.apache.log4j.Logger;
 
-// legacy
 public class EditScenarioAction extends ActionSupport {
 
-    // ------- logger
     private static final Logger logger = Logger.getLogger(EditScenarioAction.class);
-    private static final String VERSION = "v1";
-    private static int instanceCount = 0;
+    private static final String LOG_PREFIX = "TRACER EditScenarioAction  ";
 
     private void logIt(String msg) {
-        String prefix = "TRACER [EditScenarioAction " + VERSION + "(" + instanceCount + ")" + "] ";
-        logger.info(prefix + " " + msg);
+        logger.error(LOG_PREFIX + " " + msg);
     }
-    //
 
 	private static final long serialVersionUID = 1L;
 
 	private ScenarioService scenarioService = new ScenarioServiceImpl();
 	private Scenario scenarioBean;
 
+    private static int instanceCounter = 0;
+
     public EditScenarioAction() {
-        super();
-        logIt("constructor");
-        instanceCount++;
+        logIt("instance counter: " + instanceCounter);
+        instanceCounter++;
     }
 
 	public String execute() throws Exception {
