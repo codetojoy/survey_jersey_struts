@@ -1,0 +1,157 @@
+openapi: "3.0.2"
+info:
+  title: "Survey API"
+  description: "example description"
+  version: "1.0"
+  termsOfService: ""
+  contact:
+    name: "Survey API"
+    url: "https://random.org/api"
+    email: "some_email@gmail.com"
+  license:
+    name: ""
+    url: ""
+servers:
+- url: http://localhost:5151/survey_jersey_struts/rest/v1/
+  description: local dev
+paths:
+  /surveys:
+    get:
+      tags: 
+        - "surveys"
+      summary: "get all surveys"
+      description: ""
+      operationId: "GetSurveys"
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/survey'
+    post:
+      tags: 
+        - "surveys"
+      summary: "new survey"
+      description: ""
+      operationId: "NewSurvey"
+      requestBody:
+        description: "" 
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/surveyRequest'
+      responses:
+        204:
+          description: Successful response
+          headers:
+            Location:
+              schema:
+                type: string
+  /surveys/id:
+    get:
+      tags: 
+        - "surveys"
+      summary: "get survey"
+      description: ""
+      operationId: "GetSurvey"
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: "survey id"
+        schema:
+          type: integer
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/survey'
+    put:
+      tags: 
+        - "surveys"
+      summary: "update survey"
+      description: ""
+      operationId: "Update Survey"
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: "survey id"
+        schema:
+          type: integer
+      requestBody:
+        description: "" 
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateSurveyRequest'
+      responses:
+        200:
+          description: Successful response
+components:
+  schemas:
+    survey:
+      title: Survey
+      type: object
+      properties:
+        id:
+          type: integer
+        userId:
+          type: integer
+        questions:
+          type: array
+          items:
+            $ref: '#/components/schemas/question'
+    question:
+      title: Question
+      type: object
+      properties:
+        id:
+          type: integer
+        logicalName:
+          type: string
+        description:
+          type: string
+        answers:
+          type: array
+          items:
+            $ref: '#/components/schemas/answer'
+    answer:
+      title: Answer
+      type: object
+      properties:
+        id:
+          type: integer
+        desc:
+          type: string
+        selected:
+          type: boolean
+        score:
+          type: integer
+        comment:
+          type: string
+    surveyRequest:
+      title: new Survey Request
+      type: object
+      properties:
+        userId:
+          type: integer
+    updateSurveyRequest:
+      title: update Survey Request
+      type: object
+      properties:
+        userId:
+          type: integer    
+        surveyId:
+          type: integer              
+        answers:
+          type: array
+          items:
+            $ref: '#/components/schemas/answer'
